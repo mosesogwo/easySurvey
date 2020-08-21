@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_142157) do
+ActiveRecord::Schema.define(version: 2020_08_21_093056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,34 @@ ActiveRecord::Schema.define(version: 2020_08_19_142157) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.text "question_text"
+    t.boolean "required"
+    t.string "question_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.text "response_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_responses_on_question_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "title"
+    t.bigint "admin_id", null: false
+    t.datetime "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_surveys_on_admin_id"
+  end
+
+  add_foreign_key "questions", "surveys"
+  add_foreign_key "responses", "questions"
+  add_foreign_key "surveys", "admins"
 end
