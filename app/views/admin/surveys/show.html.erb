@@ -1,0 +1,7 @@
+<%= @survey.title %>
+
+<% @survey.questions.each do |question| %>
+  <%= question.question_text %>
+<% end %>
+
+<%= button_to 'Add new question' survey_questions_path(@survey.id) %>
