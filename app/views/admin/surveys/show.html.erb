@@ -4,4 +4,4 @@
   <%= question.question_text %>
 <% end %>
 
-<%= button_to 'Add new question' survey_questions_path(@survey.id) %>
+<%= button_to 'Add new question', new_admin_survey_question_path(@survey), method: :get %>
