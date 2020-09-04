@@ -3,6 +3,6 @@ class Question < ApplicationRecord
   has_many :responses
 
   validates :question_text, length: { maximum: 1000 }
-  validates :question_type, inclusion: { in: %w(scale binary descriptive) }
+  validates :question_type, inclusion: { in: %w(short_text number scale binary descriptive) }
 
 end
