@@ -1,0 +1,9 @@
+<%= form_with model: [:question, @response], local: true do |f| %>
+  <%= @question.question_text %><br>
+  
+  <%= f.label :response_text, 'Your response here' %><br>
+  <%= f.text_area :response_text  %>
+  
+
+  <%= f.submit 'Save' %>
+<% end %>

@@ -1,2 +1,7 @@
-
-<%= render 'binary_form' %>
+<% if @question.question_type == 'binary' %>
+  <%= render 'binary_form' %><br>
+<% elsif @question.question_type == 'descriptive' %>
+  <%= render 'descriptive_form' %><br>
+<% else %>
+  <%= render 'scale_form' %>
+<% end %>
