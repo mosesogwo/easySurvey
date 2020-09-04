@@ -1,7 +1,1 @@
-<h1>Create new survey</h1>
-
-<%= form_with model: [:admin, @survey] do |f| %>
-  <%= f.text_field :title %>
-  <%= f.date_field :end_date %>
-  <%= f.submit "Create" %>
-<% end %>
+<%= render 'survey_form' %>

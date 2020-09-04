@@ -1,0 +1,12 @@
+<%= form_with model: [:admin, :survey, @question] do |f| %>
+  <%= f.label :question_text, "Question" %>
+  <%= f.text_field :question_text %>
+
+  <%= f.label :question_type, "Select question type" %>
+  <%= select(:question, :question_type, [['Scaled', 'scale'], ['Binary', 'binary'], ['Descriptive', 'descriptive']]) %>
+
+  <%= f.label :required, "Required Question" %>
+
+  <%= f.check_box :required %>
+  <%= f.submit "Go"%>
+<% end %>

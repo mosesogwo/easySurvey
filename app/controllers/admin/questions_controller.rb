@@ -20,6 +20,24 @@ class Admin::QuestionsController < AdminController
     end
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    # @survey = Survey.find(params[:survey_id])
+    # @question = @survey.questions.build(question_params)
+    @question = Question.find(params[:id])
+    # byebug
+    if @question.update(question_params)
+      flash[:notice] = 'Question updated'
+      redirect_to admin_survey_path(@question.survey)
+    else
+      flash.now[:notice] = "Question wasn't updated. Please try again"
+      render :edit
+    end
+  end
+
   def destroy
   end
 

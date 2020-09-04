@@ -1,5 +1,6 @@
 class Admin::SurveysController < AdminController
   def index
+    @surveys = current_admin.surveys
   end
 
   def new
@@ -24,9 +25,18 @@ class Admin::SurveysController < AdminController
   end
 
   def edit
+    @survey = Survey.find(params[:id])
   end
 
   def update
+    @survey = Survey.find(params[:id])
+    if @survey.update(survey_params)
+      flash[:notice] = 'Survey successfully edited'
+      redirect_to admin_surveys_path
+    else
+      flash.now[:notice] = 'Something went wrong, please try again'
+      render :edit
+    end
   end
 
   def destroy

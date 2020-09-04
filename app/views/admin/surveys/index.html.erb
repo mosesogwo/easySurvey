@@ -1,0 +1,4 @@
+<% @surveys.each do |survey| %>
+  <%= survey.title %>
+  <%= button_to 'Edit', edit_admin_survey_path(survey), method: :get %><br>
+<% end %>
