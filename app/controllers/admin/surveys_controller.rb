@@ -22,6 +22,7 @@ class Admin::SurveysController < AdminController
   def show
     @survey = Survey.find(params[:id])
     @questions = @survey.questions
+    # byebug
   end
 
   def edit

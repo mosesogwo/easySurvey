@@ -10,7 +10,7 @@ class Admin::QuestionsController < AdminController
     # byebug
     @survey = Survey.find(params[:survey_id])
     @question = @survey.questions.build(question_params)
-    byebug
+    # byebug
     if @question.save
       flash[:notice] = 'Question added'
       redirect_to admin_survey_path(@question.survey)
@@ -44,6 +44,6 @@ class Admin::QuestionsController < AdminController
   private
   
   def question_params
-    params.require(:question).permit(:question_text, :question_type, :required, :survey_id)
+    params.require(:question).permit(:question_no, :question_text, :question_type, :required, :survey_id)
   end
 end

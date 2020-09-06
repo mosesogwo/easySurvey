@@ -1,9 +1,10 @@
 <%= @survey.title %><br>
 
 <% @survey.questions.each do |question| %>
+  <%= question.question_no %>
   <%= question.question_text %>
   <%= question.question_type.capitalize %>
-  <%= button_to 'Edit', edit_admin_survey_question_path(question), method: :get %><br>
+  <%= button_to 'Edit', edit_admin_survey_question_path(@survey, question), method: :get %><br>
 <% end %>
 
 <%= button_to 'Add New Question', new_admin_survey_question_path(@survey), method: :get %>

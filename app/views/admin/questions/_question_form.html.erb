@@ -1,4 +1,8 @@
 <%= form_with model: [:admin, :survey, @question] do |f| %>
+
+  <%= f.label :question_no, "Question Number" %>
+  <%= f.number_field :question_no %>
+
   <%= f.label :question_text, "Question" %>
   <%= f.text_field :question_text %>
 
