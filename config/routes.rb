@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'report/show'
   # get 'response/new'
   # get 'questions/index'
   # get 'questions/new'
@@ -11,15 +12,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :surveys do
       resources :questions, except: :show
+      resources :reports, only: :index
     end
   end
 
   resources :questions, only: :show do
     resources :responses
-  end
-
-
-
-
-  
+  end  
 end
