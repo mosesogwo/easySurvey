@@ -1,11 +1,13 @@
-<% if @question.question_type == 'binary' %>
-  <%= render 'binary_form' %><br>
-<% elsif @question.question_type == 'descriptive' %>
-  <%= render 'descriptive_form' %><br>
-<% elsif @question.question_type == 'short_text' %>
-  <%= render 'short_text_form' %>
-<% elsif @question.question_type == 'number' %>
-  <%= render 'number_form' %>
-<% else %>
-  <%= render 'scale_form' %>
-<% end %>
+<div class="container">
+  <% if @question.question_type == 'binary' %>
+    <%= render 'binary_form' %><br>
+  <% elsif @question.question_type == 'descriptive' %>
+    <%= render 'descriptive_form' %><br>
+  <% elsif @question.question_type == 'short_text' %>
+    <%= render 'short_text_form' %>
+  <% elsif @question.question_type == 'number' %>
+    <%= render 'number_form' %>
+  <% else %>
+    <%= render 'scale_form' %>
+  <% end %>
+</div>

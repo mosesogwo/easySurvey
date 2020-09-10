@@ -1,4 +1,6 @@
-<% @questions.each do |question| %>
-  <h2><%= question.question_text %></h2>
-  <%= pie_chart question.responses.group(:response_text).count %>
-<% end %>
+<div class="container">
+  <% @questions.each do |question| %>
+    <h2><%= question.question_text %></h2>
+    <%= pie_chart question.responses.group(:response_text).count %>
+  <% end %>
+</div>
