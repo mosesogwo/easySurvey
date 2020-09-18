@@ -7,10 +7,15 @@ class ResponsesController < ApplicationController
   def create
     # byebug
     question = Question.find(params[:question_id])
+    next_question = Question.find_by(id: params[:question_id].to_i + 1) if Question.find_by(id: params[:question_id].to_i + 1)
     @response = question.responses.build(response_params)
     if @response.save
       flash[:notice] = 'Response saved, click next to continue'
-      redirect_to new_question_response_path(question)
+      if next_question
+        redirect_to new_question_response_path(next_question)
+      else
+        redirect_to root_path
+      end
     else
       flash.now[:alert] = 'Please make a valid choice'
       render :new

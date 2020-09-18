@@ -1,5 +1,7 @@
 <%= form_with model: [:admin, @survey] do |f| %>
+  <%= f.label :title, 'Survey title' %>
   <%= f.text_field :title %>
+  <%= f.label :end_date, 'Closing date' %>
   <%= f.date_field :end_date %>
   <%= f.submit "Go" %>
 <% end %>
