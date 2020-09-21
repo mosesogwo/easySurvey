@@ -1,6 +1,25 @@
 <div class="container">
-  <% @surveys.each do |survey| %>
-    <%= survey.title %>
-    <%= button_to 'Edit', edit_admin_survey_path(survey), method: :get %><br>
-  <% end %>
+
+<h4 class="mt-3">All my surveys</h4>
+  
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Survey Title</th>
+      <th scope="col">Closing Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <th scope="row"><%= link_to survey.title, admin_survey_path(survey) %></th>
+        <td><%= survey.end_date %></td>
+        <td><%= button_to 'Edit', edit_admin_survey_path(survey), method: :get %><br></td>
+        <td>Delete Here</td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
 </div>

@@ -1,5 +1,6 @@
 <%= form_with model: [:question, @response], local: true do |f| %>
-  <%= @question.question_text %><br>
+
+  <h4><%= @question.question_text %></h4>
   
   <%= f.radio_button :response_text, 'agree', checked: true  %>
   <%= f.label :response_text, "I agree", value: 'agree' %><br>
@@ -8,4 +9,5 @@
   <%= f.label :response, "I disagree", value: 'disagree' %><br>
 
   <%= f.submit 'Save' %>
+
 <% end %>
